@@ -2,6 +2,8 @@
 
 A modern demo catalog application built with React and IBM Carbon Design System, showcasing various IBM Bob demonstrations and capabilities.
 
+![Bob Demo Catalog](./media/image.png)
+
 ## 🚀 Features
 
 - **Carbon Design System**: Built with Carbon React v11 components
