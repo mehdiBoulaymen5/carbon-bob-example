@@ -4,6 +4,11 @@ A modern demo catalog application built with React and IBM Carbon Design System,
 
 ![Bob Demo Catalog](./media/image.png)
 
+## 📦 Repository
+
+- **GitHub**: [https://github.com/mehdiBoulaymen5/bob-demo-catalog](https://github.com/mehdiBoulaymen5/bob-demo-catalog)
+- **Clone**: `git clone https://github.com/mehdiBoulaymen5/bob-demo-catalog.git`
+
 ## 🚀 Features
 
 - **Carbon Design System**: Built with Carbon React v11 components
@@ -25,7 +30,16 @@ A modern demo catalog application built with React and IBM Carbon Design System,
 - **Carbon Icons** (@carbon/icons-react v11.49.0)
 - **SCSS** with Carbon tokens
 
-## 📦 Installation
+## 🚀 Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/mehdiBoulaymen5/bob-demo-catalog.git
+cd bob-demo-catalog
+```
+
+### Installation
 
 ```bash
 # Install dependencies
@@ -68,6 +82,20 @@ This project follows IBM Carbon Design System guidelines:
 ## 🌐 Development
 
 The application runs on `http://localhost:5173/` by default.
+
+## 🚢 Deployment
+
+For detailed deployment instructions to IBM Cloud Code Engine, see [`DEPLOYMENT.md`](./DEPLOYMENT.md).
+
+Quick deployment:
+```bash
+ibmcloud ce application create \
+  --name carbon-react-app \
+  --build-source https://github.com/mehdiBoulaymen5/bob-demo-catalog \
+  --port 8080 \
+  --min-scale 0 \
+  --max-scale 2
+```
 
 ## 📄 License
 
