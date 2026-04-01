@@ -1,0 +1,62 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.demo-catalog {
+  padding: $spacing-07 0;
+
+  .catalog-title {
+    @include type-style('heading-04');
+    margin-block-end: $spacing-07;
+    color: $text-primary;
+  }
+
+  .demo-card-column {
+    margin-block-end: $spacing-05;
+  }
+
+  .demo-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-05;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .demo-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-block-end: $spacing-05;
+
+      .demo-icon {
+        color: $icon-primary;
+      }
+    }
+
+    .demo-title {
+      @include type-style('heading-03');
+      margin-block-end: $spacing-03;
+      color: $text-primary;
+    }
+
+    .demo-description {
+      @include type-style('body-01');
+      color: $text-secondary;
+      margin-block-end: $spacing-05;
+      flex-grow: 1;
+    }
+
+    .demo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-03;
+    }
+  }
+}
+
+// Made with Bob

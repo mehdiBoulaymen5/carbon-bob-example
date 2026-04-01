@@ -1,0 +1,41 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.main-content {
+  margin-block-start: $spacing-09;
+}
+
+.hero-section {
+  padding: $spacing-09 0;
+  text-align: center;
+
+  h1 {
+    @include type-style('heading-05');
+    margin-block-end: $spacing-05;
+    color: $text-primary;
+  }
+
+  p {
+    @include type-style('body-02');
+    color: $text-secondary;
+  }
+}
+
+.footer-section {
+  margin-block-start: $spacing-09;
+  padding: $spacing-07 0;
+  background-color: $layer-01;
+
+  footer {
+    text-align: center;
+
+    p {
+      @include type-style('body-01');
+      color: $text-secondary;
+      margin: 0;
+    }
+  }
+}
+
+// Made with Bob
