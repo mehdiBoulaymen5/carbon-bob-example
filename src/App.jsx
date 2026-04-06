@@ -1,39 +1,81 @@
-import { Theme, Header, HeaderName, HeaderNavigation, HeaderMenuItem, Grid, Column } from '@carbon/react';
-import DemoCatalog from './components/DemoCatalog';
+/**
+ * Main App Component
+ *
+ * Root component with routing configuration for public and admin areas.
+ * Includes authentication context provider, SSE provider, and route protection.
+ */
+
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Theme } from '@carbon/react';
+import { AuthProvider } from './contexts/AuthContext';
+import { SSEProvider } from './contexts/SSEContext';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Layouts
+import PublicLayout from './components/public/PublicLayout';
+import AdminLayout from './components/admin/AdminLayout';
+
+// Public Pages
+import Home from './components/public/Home';
+import PublicationsPage from './components/public/PublicationsPage';
+import PublicationDetail from './components/public/PublicationDetail';
+import NotFound from './components/shared/NotFound';
+
+// Admin Pages
+import AdminLogin from './components/admin/AdminLogin';
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminPublications from './components/admin/AdminPublications';
+import AdminAuditLogs from './components/admin/AdminAuditLogs';
+import PublicationForm from './components/admin/PublicationForm';
+
 import './App.scss';
 
+/**
+ * Main App component
+ * @returns {React.ReactElement} Application root
+ */
 function App() {
   return (
     <Theme theme="g10">
-      <Header aria-label="Bob Demo Catalog">
-        <HeaderName href="#" prefix="IBM">
-          Bob Demo Catalog
-        </HeaderName>
-        <HeaderNavigation aria-label="Bob Demo Catalog">
-          <HeaderMenuItem href="#demos">Demos</HeaderMenuItem>
-          <HeaderMenuItem href="#about">About</HeaderMenuItem>
-          <HeaderMenuItem href="#contact">Contact</HeaderMenuItem>
-        </HeaderNavigation>
-      </Header>
+      <BrowserRouter future={{ v7_relativeSplatPath: true }}>
+        <AuthProvider>
+          <SSEProvider>
+            <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<PublicLayout />}>
+              <Route index element={<Home />} />
+              <Route path="publications" element={<PublicationsPage />} />
+              <Route path="publications/:id" element={<PublicationDetail />} />
+              <Route path="not-found" element={<NotFound />} />
+            </Route>
 
-      <Grid className="main-content">
-        <Column sm={4} md={8} lg={16}>
-          <div className="hero-section">
-            <h1>Bob Demo Catalog</h1>
-            <p>Explore our collection of IBM Bob demonstrations and examples</p>
-          </div>
-        </Column>
-      </Grid>
+            {/* Admin Login (not protected) */}
+            <Route path="/admin/login" element={<AdminLogin />} />
 
-      <DemoCatalog />
+            {/* Protected Admin Routes */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="/admin/dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="publications" element={<AdminPublications />} />
+              <Route path="publications/new" element={<PublicationForm />} />
+              <Route path="publications/:id/edit" element={<PublicationForm />} />
+              <Route path="audit-logs" element={<AdminAuditLogs />} />
+            </Route>
 
-      <Grid className="footer-section">
-        <Column sm={4} md={8} lg={16}>
-          <footer>
-            <p>&copy; 2026 IBM Bob Demo Catalog. All rights reserved.</p>
-          </footer>
-        </Column>
-      </Grid>
+              {/* Catch all - show 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </SSEProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </Theme>
   );
 }

@@ -1,0 +1,77 @@
+/**
+ * Add Use Case Modal Styles
+ */
+
+.add-use-case-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  // Form fields spacing
+  .cds--text-input,
+  .cds--text-area,
+  .cds--select {
+    margin-bottom: 1rem;
+  }
+
+  // Last field no margin
+  .cds--select:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // Notification spacing
+  .cds--inline-notification {
+    margin-bottom: 1rem;
+  }
+
+  // Loading indicator
+  .cds--inline-loading {
+    margin-bottom: 1rem;
+  }
+
+  // Helper text styling
+  .cds--form__helper-text {
+    font-size: 0.75rem;
+    color: var(--cds-text-secondary);
+  }
+
+  // Invalid field styling
+  .cds--text-input__invalid-icon,
+  .cds--text-area__invalid-icon {
+    fill: var(--cds-support-error);
+  }
+
+  // Checkbox fieldset styling
+  &__fieldset {
+    border: 1px solid var(--cds-border-subtle);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    background-color: var(--cds-layer-01);
+
+    .cds--checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .cds--checkbox-wrapper {
+      margin-bottom: 0;
+    }
+  }
+
+  &__legend {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--cds-text-primary);
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Modal content padding adjustment
+.cds--modal-content {
+  padding: 1rem 1rem 0 1rem;
+}
+
+// Made with Bob

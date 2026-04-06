@@ -1,0 +1,68 @@
+/**
+ * Publication Form Styles
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.publication-form {
+  padding: $spacing-05 0;
+}
+
+.publication-form__title {
+  @include type-style('heading-04');
+  margin-bottom: $spacing-06;
+  color: $text-primary;
+}
+
+.publication-form__form {
+  margin-top: $spacing-06;
+}
+
+.publication-form__step {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-05;
+  margin-top: $spacing-06;
+  margin-bottom: $spacing-06;
+  min-height: 400px;
+}
+
+.publication-form__actions {
+  display: flex;
+  gap: $spacing-03;
+  justify-content: flex-end;
+  margin-top: $spacing-07;
+  padding-top: $spacing-05;
+  border-top: 1px solid $border-subtle;
+  flex-wrap: wrap;
+}
+
+.publication-form__fieldset {
+  border: 1px solid $border-subtle;
+  padding: $spacing-05;
+  margin-bottom: $spacing-05;
+  border-radius: 4px;
+  background-color: $layer-01;
+
+  .cds--checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: $spacing-04;
+    margin-top: $spacing-03;
+  }
+
+  .cds--checkbox-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+.publication-form__legend {
+  @include type-style('label-01');
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: $spacing-03;
+}
+
+// Made with Bob

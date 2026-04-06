@@ -1,164 +1,221 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Grid,
   Column,
   Tile,
   Tag,
   Button,
-  Modal,
-  TextInput,
-  TextArea,
-  MultiSelect,
-  Checkbox
+  ToastNotification
 } from '@carbon/react';
-import { Code, DataBase, ChartLine, Chat, CloudApp, Security, Add } from '@carbon/icons-react';
+import { Code, DataBase, ChartLine, Chat, CloudApp, Security, Analytics, Api, Add } from '@carbon/icons-react';
+import { useAuth } from '../contexts/AuthContext';
+import AddUseCaseModal from './shared/AddUseCaseModal';
+import LoadingState from './shared/LoadingState';
+import EmptyState from './shared/EmptyState';
+import publicationService from '../services/publication.service';
 import './DemoCatalog.scss';
 
-const demos = [
-  {
-    id: 1,
-    title: 'Code Generation Demo',
-    description: 'Explore how Bob can generate clean, efficient code across multiple programming languages with intelligent suggestions.',
-    icon: Code,
-    tags: ['AI', 'Code', 'Automation'],
-    status: 'Available'
-  },
-  {
-    id: 2,
-    title: 'Data Analysis Demo',
-    description: 'See Bob analyze complex datasets, generate insights, and create visualizations to help you make data-driven decisions.',
-    icon: DataBase,
-    tags: ['Analytics', 'Data', 'Insights'],
-    status: 'Available'
-  },
-  {
-    id: 3,
-    title: 'Chart Visualization Demo',
-    description: 'Discover how Bob creates interactive charts and dashboards using Carbon Charts for compelling data storytelling.',
-    icon: ChartLine,
-    tags: ['Visualization', 'Charts', 'Dashboard'],
-    status: 'Available'
-  },
-  {
-    id: 4,
-    title: 'AI Chat Integration',
-    description: 'Experience conversational AI with Bob\'s chat interface, powered by Carbon AI Chat components for seamless interactions.',
-    icon: Chat,
-    tags: ['AI', 'Chat', 'Conversation'],
-    status: 'New'
-  },
-  {
-    id: 5,
-    title: 'Cloud Deployment Demo',
-    description: 'Learn how Bob streamlines cloud deployments with automated workflows and infrastructure management.',
-    icon: CloudApp,
-    tags: ['Cloud', 'DevOps', 'Automation'],
-    status: 'Available'
-  },
-  {
-    id: 6,
-    title: 'Security Analysis Demo',
-    description: 'See how Bob identifies security vulnerabilities and suggests best practices to keep your applications secure.',
-    icon: Security,
-    tags: ['Security', 'Analysis', 'Best Practices'],
-    status: 'Coming Soon'
-  }
-];
-
-const topicOptions = [
-  { id: 'ai', label: 'AI' },
-  { id: 'code', label: 'Code' },
-  { id: 'automation', label: 'Automation' },
-  { id: 'analytics', label: 'Analytics' },
-  { id: 'data', label: 'Data' },
-  { id: 'insights', label: 'Insights' },
-  { id: 'visualization', label: 'Visualization' },
-  { id: 'charts', label: 'Charts' },
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'chat', label: 'Chat' },
-  { id: 'conversation', label: 'Conversation' },
-  { id: 'cloud', label: 'Cloud' },
-  { id: 'devops', label: 'DevOps' },
-  { id: 'security', label: 'Security' },
-  { id: 'best-practices', label: 'Best Practices' }
-];
-
-const audienceOptions = [
-  { id: 'developers', label: 'Developers' },
-  { id: 'data-scientists', label: 'Data Scientists' },
-  { id: 'business-analysts', label: 'Business Analysts' },
-  { id: 'devops-engineers', label: 'DevOps Engineers' },
-  { id: 'security-professionals', label: 'Security Professionals' },
-  { id: 'executives', label: 'Executives' }
-];
-
-const industryOptions = [
-  { id: 'finance', label: 'Finance' },
-  { id: 'healthcare', label: 'Healthcare' },
-  { id: 'retail', label: 'Retail' },
-  { id: 'manufacturing', label: 'Manufacturing' },
-  { id: 'technology', label: 'Technology' },
-  { id: 'telecommunications', label: 'Telecommunications' },
-  { id: 'energy', label: 'Energy' },
-  { id: 'government', label: 'Government' }
-];
+// Icon mapping for dynamic icon rendering
+const iconMap = {
+  Code,
+  DataBase,
+  ChartLine,
+  Chat,
+  CloudApp,
+  Security,
+  Analytics,
+  Api
+};
 
 function DemoCatalog() {
-  const [demoList, setDemoList] = useState(demos);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    topics: [],
-    audience: [],
-    gitSource: '',
-    boxSource: '',
-    industries: []
-  });
+  const [useCases, setUseCases] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [notification, setNotification] = useState(null);
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
 
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  /**
+   * Fetch use cases from the database
+   */
+  const fetchUseCases = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Fetch published use cases from the database
+      const response = await publicationService.getPublicPublications(1, 100);
+      setUseCases(response.publications || []);
+    } catch (err) {
+      console.error('Failed to fetch use cases:', err);
+      setError(err.message || 'Failed to load use cases. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmit = () => {
-    const newDemo = {
-      id: demoList.length + 1,
-      title: formData.title,
-      description: formData.description,
-      icon: Code, // Default icon
-      tags: formData.topics.map(t => t.label),
-      status: 'New',
-      audience: formData.audience.map(a => a.label),
-      sources: {
-        git: formData.gitSource,
-        box: formData.boxSource
-      },
-      industries: formData.industries.map(i => i.label)
-    };
+  /**
+   * Load use cases on component mount
+   */
+  useEffect(() => {
+    fetchUseCases();
+  }, []);
 
-    setDemoList([...demoList, newDemo]);
-    setIsModalOpen(false);
-    setFormData({
-      title: '',
-      description: '',
-      topics: [],
-      audience: [],
-      gitSource: '',
-      boxSource: '',
-      industries: []
+  /**
+   * Handle "Add Use Case" button click
+   * Opens the modal for creating a new use case
+   */
+  const handleAddUseCase = () => {
+    setModalOpen(true);
+  };
+
+  /**
+   * Handle modal close
+   */
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  /**
+   * Handle successful use case creation
+   */
+  const handleSuccess = () => {
+    setNotification({
+      kind: 'success',
+      title: 'Success',
+      subtitle: 'Use case created successfully!',
+      timeout: 5000
     });
+    
+    // Refresh the use cases list
+    fetchUseCases();
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="demo-catalog">
+        <Grid>
+          <Column sm={4} md={8} lg={16}>
+            <div className="catalog-header">
+              <h2 className="catalog-title">Available Use Cases</h2>
+              <Button
+                kind="primary"
+                renderIcon={Add}
+                onClick={handleAddUseCase}
+                size="md"
+              >
+                Add Use Case
+              </Button>
+            </div>
+          </Column>
+        </Grid>
+        <LoadingState message="Loading use cases..." />
+        <AddUseCaseModal
+          open={modalOpen}
+          onClose={handleModalClose}
+          onSuccess={handleSuccess}
+        />
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="demo-catalog">
+        <Grid>
+          <Column sm={4} md={8} lg={16}>
+            <div className="catalog-header">
+              <h2 className="catalog-title">Available Use Cases</h2>
+              <Button
+                kind="primary"
+                renderIcon={Add}
+                onClick={handleAddUseCase}
+                size="md"
+              >
+                Add Use Case
+              </Button>
+            </div>
+          </Column>
+        </Grid>
+        <EmptyState
+          title="Failed to load use cases"
+          description={error}
+          action={{
+            label: 'Try Again',
+            onClick: fetchUseCases
+          }}
+        />
+        <AddUseCaseModal
+          open={modalOpen}
+          onClose={handleModalClose}
+          onSuccess={handleSuccess}
+        />
+      </div>
+    );
+  }
+
+  // Show empty state if no use cases
+  if (useCases.length === 0) {
+    return (
+      <div className="demo-catalog">
+        <Grid>
+          <Column sm={4} md={8} lg={16}>
+            <div className="catalog-header">
+              <h2 className="catalog-title">Available Use Cases</h2>
+              <Button
+                kind="primary"
+                renderIcon={Add}
+                onClick={handleAddUseCase}
+                size="md"
+              >
+                Add Use Case
+              </Button>
+            </div>
+          </Column>
+        </Grid>
+        <EmptyState
+          title="No use cases yet"
+          description="Be the first to add a use case to the catalog!"
+          action={{
+            label: 'Add Use Case',
+            onClick: handleAddUseCase
+          }}
+        />
+        <AddUseCaseModal
+          open={modalOpen}
+          onClose={handleModalClose}
+          onSuccess={handleSuccess}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="demo-catalog">
+      {notification && (
+        <ToastNotification
+          kind={notification.kind}
+          title={notification.title}
+          subtitle={notification.subtitle}
+          timeout={notification.timeout}
+          onClose={() => setNotification(null)}
+          style={{ position: 'fixed', top: '3rem', right: '1rem', zIndex: 9999 }}
+        />
+      )}
+
       <Grid>
         <Column sm={4} md={8} lg={16}>
           <div className="catalog-header">
-            <h2 className="catalog-title">Available Demos</h2>
+            <h2 className="catalog-title">Available Use Cases</h2>
             <Button
               kind="primary"
               renderIcon={Add}
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleAddUseCase}
+              size="md"
             >
               Add Use Case
             </Button>
@@ -167,23 +224,36 @@ function DemoCatalog() {
       </Grid>
 
       <Grid>
-        {demoList.map((demo) => {
-          const IconComponent = demo.icon;
+        {useCases.map((useCase) => {
+          // Get the icon component from the icon map, default to Code if not found
+          const IconComponent = iconMap[useCase.icon] || Code;
+          
           return (
-            <Column key={demo.id} sm={4} md={4} lg={5} className="demo-card-column">
-              <Tile className="demo-card">
+            <Column key={useCase.id} sm={4} md={4} lg={5} className="demo-card-column">
+              <Tile
+                className="demo-card demo-card--clickable"
+                onClick={() => navigate(`/publications/${useCase.id}`, { state: { fromCatalog: true } })}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate(`/publications/${useCase.id}`, { state: { fromCatalog: true } });
+                  }
+                }}
+              >
                 <div className="demo-card-header">
                   <IconComponent size={32} className="demo-icon" />
-                  <Tag type={demo.status === 'New' ? 'blue' : demo.status === 'Coming Soon' ? 'gray' : 'green'}>
-                    {demo.status}
+                  <Tag type="green">
+                    Published
                   </Tag>
                 </div>
-                <h3 className="demo-title">{demo.title}</h3>
-                <p className="demo-description">{demo.description}</p>
+                <h3 className="demo-title">{useCase.title}</h3>
+                <p className="demo-description">{useCase.description}</p>
                 <div className="demo-tags">
-                  {demo.tags.map((tag, index) => (
+                  {useCase.topics && useCase.topics.slice(0, 3).map((topic, index) => (
                     <Tag key={index} type="outline" size="sm">
-                      {tag}
+                      {topic}
                     </Tag>
                   ))}
                 </div>
@@ -193,82 +263,11 @@ function DemoCatalog() {
         })}
       </Grid>
 
-      <Modal
-        open={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        onRequestSubmit={handleSubmit}
-        modalHeading="Add New Use Case"
-        primaryButtonText="Add Use Case"
-        secondaryButtonText="Cancel"
-        size="lg"
-      >
-        <div className="use-case-form">
-          <TextInput
-            id="demo-title"
-            labelText="Demo Title"
-            placeholder="Enter demo title"
-            value={formData.title}
-            onChange={(e) => handleInputChange('title', e.target.value)}
-            required
-          />
-
-          <TextArea
-            id="demo-description"
-            labelText="Description"
-            placeholder="Enter demo description"
-            value={formData.description}
-            onChange={(e) => handleInputChange('description', e.target.value)}
-            rows={4}
-            required
-          />
-
-          <MultiSelect
-            id="demo-topics"
-            titleText="Topics"
-            label="Select topics"
-            items={topicOptions}
-            itemToString={(item) => (item ? item.label : '')}
-            selectedItems={formData.topics}
-            onChange={({ selectedItems }) => handleInputChange('topics', selectedItems)}
-          />
-
-          <MultiSelect
-            id="demo-audience"
-            titleText="Audience"
-            label="Select target audience"
-            items={audienceOptions}
-            itemToString={(item) => (item ? item.label : '')}
-            selectedItems={formData.audience}
-            onChange={({ selectedItems }) => handleInputChange('audience', selectedItems)}
-          />
-
-          <TextInput
-            id="git-source"
-            labelText="Git Source"
-            placeholder="Enter Git repository URL"
-            value={formData.gitSource}
-            onChange={(e) => handleInputChange('gitSource', e.target.value)}
-          />
-
-          <TextInput
-            id="box-source"
-            labelText="Box Source"
-            placeholder="Enter Box folder URL"
-            value={formData.boxSource}
-            onChange={(e) => handleInputChange('boxSource', e.target.value)}
-          />
-
-          <MultiSelect
-            id="demo-industries"
-            titleText="Industries"
-            label="Select industries"
-            items={industryOptions}
-            itemToString={(item) => (item ? item.label : '')}
-            selectedItems={formData.industries}
-            onChange={({ selectedItems }) => handleInputChange('industries', selectedItems)}
-          />
-        </div>
-      </Modal>
+      <AddUseCaseModal
+        open={modalOpen}
+        onClose={handleModalClose}
+        onSuccess={handleSuccess}
+      />
     </div>
   );
 }
