@@ -89,8 +89,8 @@ const authService = {
   async getCurrentUser() {
     try {
       const response = await api.get('/auth/me');
-      // Extract from nested data structure
-      return response.data.data.user;
+      // /auth/me returns the user object directly in data
+      return response.data.data;
     } catch (error) {
       throw this.handleError(error);
     }
