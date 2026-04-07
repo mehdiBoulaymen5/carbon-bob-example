@@ -1,0 +1,43 @@
+/**
+ * Empty State Styles
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: $spacing-07;
+}
+
+.empty-state__content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.empty-state__icon {
+  color: $icon-secondary;
+  margin-bottom: $spacing-05;
+}
+
+.empty-state__title {
+  @include type-style('heading-03');
+  margin-bottom: $spacing-03;
+  color: $text-primary;
+}
+
+.empty-state__message {
+  @include type-style('body-02');
+  color: $text-secondary;
+  margin-bottom: $spacing-06;
+}
+
+.empty-state__action {
+  margin-top: $spacing-05;
+}
+
+// Made with Bob

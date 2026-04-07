@@ -5,17 +5,43 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
+    "test:backend": "cd backend && npm test",
+    "test:backend:unit": "cd backend && npm run test:unit",
+    "test:backend:integration": "cd backend && npm run test:integration",
+    "lint": "eslint . --ext js,jsx --max-warnings 0",
+    "lint:backend": "cd backend && npm run lint"
   },
   "dependencies": {
     "@carbon/react": "^1.68.0",
     "@carbon/icons-react": "^11.49.0",
+    "axios": "^1.6.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "jsdom": "^23.0.0",
+    "playwright": "^1.40.0",
     "sass": "^1.83.0",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "vitest": "^1.0.0"
   }
 }

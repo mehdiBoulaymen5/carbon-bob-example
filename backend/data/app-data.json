@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "19ae77b5-accf-466a-abe2-3c682c85c42b",
+      "email": "admin@example.com",
+      "password_hash": "$2b$10$4ce9Zd99/Q5Z2bgRRlq9gOXFB5gCdkfYkObqWOY4ImdPxGqTWXyw.",
+      "name": "System Administrator",
+      "role": "admin",
+      "is_active": true,
+      "last_login_at": null,
+      "created_at": "2026-04-07T08:48:14.158Z",
+      "updated_at": "2026-04-07T08:48:14.159Z"
+    }
+  ],
+  "publications": [],
+  "refresh_tokens": [],
+  "audit_logs": []
+}

@@ -1,0 +1,94 @@
+/**
+ * PublicLayout Styles
+ * 
+ * Styling for public layout with enhanced footer.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
+.public-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.public-layout__footer {
+  margin-block-start: auto;
+  background-color: $layer-01;
+  padding-block: $spacing-09;
+  border-block-start: 1px solid $border-subtle;
+}
+
+.public-layout__footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-07;
+  margin-block-end: $spacing-07;
+
+  @include breakpoint-up('md') {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.public-layout__footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+}
+
+.public-layout__footer-title {
+  @include type-style('heading-03');
+  color: $text-primary;
+  margin-block-end: $spacing-03;
+}
+
+.public-layout__footer-subtitle {
+  @include type-style('heading-01');
+  color: $text-primary;
+  font-weight: 600;
+}
+
+.public-layout__footer-description {
+  @include type-style('body-01');
+  color: $text-secondary;
+  max-width: 400px;
+}
+
+.public-layout__footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.public-layout__footer-link {
+  @include type-style('body-01');
+  color: $link-primary;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: $link-primary-hover;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid $focus;
+    outline-offset: 2px;
+  }
+}
+
+.public-layout__footer-bottom {
+  padding-block-start: $spacing-06;
+  border-block-start: 1px solid $border-subtle;
+}
+
+.public-layout__footer-copyright {
+  @include type-style('label-01');
+  color: $text-secondary;
+  text-align: center;
+}
+
+// Made with Bob

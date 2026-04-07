@@ -1,0 +1,13 @@
+/**
+ * Admin Audit Logs Styles
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.admin-audit-logs {
+  padding: $spacing-05 0;
+}
+
+// Made with Bob

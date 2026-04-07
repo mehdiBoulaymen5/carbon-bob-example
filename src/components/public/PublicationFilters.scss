@@ -1,0 +1,67 @@
+/**
+ * PublicationFilters Styles
+ * 
+ * Styling for publication filter controls.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
+.publication-filters {
+  margin-block-end: $spacing-07;
+}
+
+.publication-filters__controls {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-05;
+
+  @include breakpoint-up('md') {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.publication-filters__search {
+  flex: 1;
+  min-width: 0;
+}
+
+.publication-filters__dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-05;
+
+  @include breakpoint-up('md') {
+    flex-direction: row;
+    gap: $spacing-05;
+  }
+}
+
+.publication-filters__active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-05;
+  padding: $spacing-05;
+  background-color: $layer-01;
+  border-radius: 4px;
+  margin-block-start: $spacing-05;
+}
+
+.publication-filters__active-label {
+  @include type-style('label-01');
+  color: $text-secondary;
+  font-weight: 600;
+}
+
+.publication-filters__active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+  flex: 1;
+}
+
+// Made with Bob

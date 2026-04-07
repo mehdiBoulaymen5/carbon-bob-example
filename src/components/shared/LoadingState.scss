@@ -1,0 +1,29 @@
+/**
+ * LoadingState Styles
+ * 
+ * Styling for loading state component.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-09;
+  min-height: 200px;
+}
+
+.loading-state--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($background, 0.8);
+  z-index: 9999;
+  min-height: 100vh;
+}
+
+// Made with Bob

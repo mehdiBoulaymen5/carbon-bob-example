@@ -1,0 +1,506 @@
+{
+  "users": [
+    {
+      "id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "email": "admin@example.com",
+      "password_hash": "$2b$10$IOngxIEbPtGTQfp2lEF4Ou9ZdLECgLfyWYfB7Io4EUjDYtjS0dIE.",
+      "name": "System Administrator",
+      "role": "admin",
+      "is_active": true,
+      "last_login_at": "2026-04-07T10:08:20.727Z",
+      "created_at": "2026-04-07T08:50:07.106Z",
+      "updated_at": "2026-04-07T10:08:20.727Z"
+    }
+  ],
+  "publications": [
+    {
+      "id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+      "title": "Local file mode demo use case",
+      "description": "This is a local verification use case created while running the app in file storage mode.",
+      "topics": [
+        "General"
+      ],
+      "audience": [
+        "General"
+      ],
+      "industries": [
+        "General"
+      ],
+      "owners": [
+        "admin@example.com"
+      ],
+      "git_source": "https://github.com/example/repo",
+      "box_source": "https://box.com/s/example",
+      "icon": "Code",
+      "status": "published",
+      "metadata": "{}",
+      "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "published_at": "2026-04-07T09:42:41.746Z",
+      "created_at": "2026-04-07T09:42:41.748Z",
+      "updated_at": "2026-04-07T10:06:26.298Z",
+      "view_count": 6
+    },
+    {
+      "id": "c3bd2792-eda7-462d-86cf-28991e228496",
+      "title": "wxcvbn,;klmxvcmwbcjhxvlkhmjdmglsdq,nglkdqshmxqdhgdkqwv",
+      "description": "cqs:kfjsdhgfms,qdhg,qg,SGKdsghkdsGM",
+      "topics": [
+        "General"
+      ],
+      "audience": [
+        "General"
+      ],
+      "industries": [
+        "General"
+      ],
+      "owners": null,
+      "git_source": null,
+      "box_source": null,
+      "icon": "Code",
+      "status": "published",
+      "metadata": "{}",
+      "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "published_at": "2026-04-07T10:00:53.641Z",
+      "created_at": "2026-04-07T10:00:53.642Z",
+      "updated_at": "2026-04-07T10:06:53.143Z",
+      "view_count": 2
+    },
+    {
+      "id": "22003ab8-81ea-422b-89c4-9b699b2ecaaa",
+      "title": "adddin publication",
+      "description": "adding publication admin",
+      "topics": [
+        "AI"
+      ],
+      "audience": [
+        "Developers"
+      ],
+      "industries": [
+        "Technology"
+      ],
+      "owners": null,
+      "git_source": null,
+      "box_source": null,
+      "icon": "Code",
+      "status": "published",
+      "metadata": "{}",
+      "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "published_at": "2026-04-07T10:06:21.498Z",
+      "created_at": "2026-04-07T10:06:21.498Z",
+      "updated_at": "2026-04-07T10:10:06.961Z",
+      "view_count": 2
+    },
+    {
+      "id": "a2630e27-364f-45c9-887a-07e8e7869688",
+      "title": "Admin Created Use Case",
+      "description": "This use case was created from the admin flow after fixing optional owners validation.",
+      "topics": [
+        "General"
+      ],
+      "audience": [
+        "Students"
+      ],
+      "industries": [
+        "Technology"
+      ],
+      "owners": null,
+      "git_source": null,
+      "box_source": null,
+      "icon": "Code",
+      "status": "published",
+      "metadata": "{}",
+      "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+      "published_at": "2026-04-07T10:09:49.863Z",
+      "created_at": "2026-04-07T10:09:49.863Z",
+      "updated_at": "2026-04-07T10:10:02.376Z",
+      "view_count": 4
+    }
+  ],
+  "refresh_tokens": [
+    {
+      "id": "6da3f7d7-7973-4385-bf79-d781de9742c6",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "5b5983c87cade14dd6366a3b3ea916ba146298ff080cd4860d59bf2bcb817b2b",
+      "expires_at": "2026-04-14T08:50:46.121Z",
+      "created_at": "2026-04-07T08:50:46.121Z",
+      "revoked_at": "2026-04-07T08:56:36.429Z"
+    },
+    {
+      "id": "9b306ae9-50a0-412b-9485-64a8808b0f44",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "ea1959528fdc030d6199550cc9eb90083df61b3fc9a7e90a6945667edfd28ad2",
+      "expires_at": "2026-04-14T09:46:36.921Z",
+      "created_at": "2026-04-07T09:46:36.921Z",
+      "revoked_at": null
+    },
+    {
+      "id": "1a239ae9-e7c3-49a1-9e95-c6472a9ae4db",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "25cc5dab362fad01f6dcbf25a9ea078bf89fc40dc783c2d34b891b44068296c8",
+      "expires_at": "2026-04-14T09:52:13.910Z",
+      "created_at": "2026-04-07T09:52:13.910Z",
+      "revoked_at": null
+    },
+    {
+      "id": "cb15185e-c6be-4bdd-b9e4-5a54ac948fbe",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "e87530d405297a491e59d7dafc5934b0512a8d69f32b2a93a141d4b7eaee1f13",
+      "expires_at": "2026-04-14T09:57:54.717Z",
+      "created_at": "2026-04-07T09:57:54.717Z",
+      "revoked_at": null
+    },
+    {
+      "id": "ff0c720f-f030-46c5-909d-af3ea4d916c1",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "7078173ab1065ca8a01071981d25445f11d21828816834085b4813ad677ad9cf",
+      "expires_at": "2026-04-14T10:01:18.595Z",
+      "created_at": "2026-04-07T10:01:18.595Z",
+      "revoked_at": null
+    },
+    {
+      "id": "91c09746-90e6-4a3f-a14c-7c6e6ab5e1a9",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "token_hash": "6a3725950124717ed905a4c33d9e4efcb44548904dc52e1fd760e6dadf7a8800",
+      "expires_at": "2026-04-14T10:08:20.726Z",
+      "created_at": "2026-04-07T10:08:20.726Z",
+      "revoked_at": null
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "5eff6f7f-42c1-4276-ac4b-82d581bfe63e",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T08:50:46.123Z"
+    },
+    {
+      "id": "464e6f9e-a0fb-47ec-9dd7-094eac47a981",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGOUT",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T08:56:36.430Z"
+    },
+    {
+      "id": "6bf88c86-aada-41fb-895c-e996456c3946",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "public@system",
+      "action": "CREATE",
+      "resource_type": "publication",
+      "resource_id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+      "changes": {
+        "publication": {
+          "id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+          "title": "Local file mode demo use case",
+          "description": "This is a local verification use case created while running the app in file storage mode.",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "General"
+          ],
+          "industries": [
+            "General"
+          ],
+          "owners": [
+            "admin@example.com"
+          ],
+          "git_source": "https://github.com/example/repo",
+          "box_source": "https://box.com/s/example",
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T09:42:41.746Z",
+          "created_at": "2026-04-07T09:42:41.748Z",
+          "updated_at": "2026-04-07T09:42:41.748Z"
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Python-urllib/3.11",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T09:42:41.748Z"
+    },
+    {
+      "id": "76d7b765-b5cc-4879-900e-a17ab250449a",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T09:46:36.922Z"
+    },
+    {
+      "id": "d5f8dde9-c6fd-4ec1-a809-af61b516a1c5",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T09:52:13.913Z"
+    },
+    {
+      "id": "1e9b01f7-2134-4cba-955d-ffee2bc5309d",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "UPDATE",
+      "resource_type": "publication",
+      "resource_id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+      "changes": {
+        "before": {
+          "id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+          "title": "Local file mode demo use case",
+          "description": "This is a local verification use case created while running the app in file storage mode.",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "General"
+          ],
+          "industries": [
+            "General"
+          ],
+          "owners": [
+            "admin@example.com"
+          ],
+          "git_source": "https://github.com/example/repo",
+          "box_source": "https://box.com/s/example",
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T09:42:41.746Z",
+          "created_at": "2026-04-07T09:42:41.748Z",
+          "updated_at": "2026-04-07T09:48:33.866Z",
+          "view_count": 2
+        },
+        "after": {
+          "id": "89fc5515-d8c5-4548-9fe8-cc1c5edd9605",
+          "title": "Local file mode demo use case",
+          "description": "This is a local verification use case created while running the app in file storage mode.",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "General"
+          ],
+          "industries": [
+            "General"
+          ],
+          "owners": [
+            "admin@example.com"
+          ],
+          "git_source": "https://github.com/example/repo",
+          "box_source": "https://box.com/s/example",
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T09:42:41.746Z",
+          "created_at": "2026-04-07T09:42:41.748Z",
+          "updated_at": "2026-04-07T09:52:14.619Z",
+          "view_count": 2
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T09:52:14.620Z"
+    },
+    {
+      "id": "559695b9-024b-4f95-ab6a-7d3956b27bdc",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T09:57:54.719Z"
+    },
+    {
+      "id": "fb6f17e1-4ee0-44f2-8d25-69b83236880c",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "public@system",
+      "action": "CREATE",
+      "resource_type": "publication",
+      "resource_id": "c3bd2792-eda7-462d-86cf-28991e228496",
+      "changes": {
+        "publication": {
+          "id": "c3bd2792-eda7-462d-86cf-28991e228496",
+          "title": "wxcvbn,;klmxvcmwbcjhxvlkhmjdmglsdq,nglkdqshmxqdhgdkqwv",
+          "description": "cqs:kfjsdhgfms,qdhg,qg,SGKdsghkdsGM",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "General"
+          ],
+          "industries": [
+            "General"
+          ],
+          "owners": null,
+          "git_source": null,
+          "box_source": null,
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T10:00:53.641Z",
+          "created_at": "2026-04-07T10:00:53.642Z",
+          "updated_at": "2026-04-07T10:00:53.642Z"
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:00:53.644Z"
+    },
+    {
+      "id": "f667d0a9-784d-4d4d-88ba-869b6c0f7e18",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:01:18.596Z"
+    },
+    {
+      "id": "06c4a767-e098-44dc-8d3f-1307b505ba55",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "CREATE",
+      "resource_type": "publication",
+      "resource_id": "22003ab8-81ea-422b-89c4-9b699b2ecaaa",
+      "changes": {
+        "publication": {
+          "id": "22003ab8-81ea-422b-89c4-9b699b2ecaaa",
+          "title": "adddin publication",
+          "description": "adding publication admin",
+          "topics": [
+            "AI"
+          ],
+          "audience": [
+            "Developers"
+          ],
+          "industries": [
+            "Technology"
+          ],
+          "owners": null,
+          "git_source": null,
+          "box_source": null,
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T10:06:21.498Z",
+          "created_at": "2026-04-07T10:06:21.498Z",
+          "updated_at": "2026-04-07T10:06:21.498Z"
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:06:21.500Z"
+    },
+    {
+      "id": "b68a6dbe-f2a3-465a-8af5-3defd4aa8841",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:08:20.728Z"
+    },
+    {
+      "id": "88dba586-4b2c-47bb-acc0-74b72f3918c2",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "CREATE",
+      "resource_type": "publication",
+      "resource_id": "a2630e27-364f-45c9-887a-07e8e7869688",
+      "changes": {
+        "publication": {
+          "id": "a2630e27-364f-45c9-887a-07e8e7869688",
+          "title": "Admin Created Use Case",
+          "description": "This use case was created from the admin flow after fixing optional owners validation.",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "Students"
+          ],
+          "industries": [
+            "Technology"
+          ],
+          "owners": null,
+          "git_source": null,
+          "box_source": null,
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T10:09:49.863Z",
+          "created_at": "2026-04-07T10:09:49.863Z",
+          "updated_at": "2026-04-07T10:09:49.863Z"
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:09:49.864Z"
+    }
+  ]
+}

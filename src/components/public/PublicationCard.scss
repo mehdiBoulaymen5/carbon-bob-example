@@ -1,0 +1,89 @@
+/**
+ * PublicationCard Styles
+ * 
+ * Styling for publication card component with hover effects.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.publication-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    .publication-card__arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  &:focus {
+    outline: 2px solid $focus;
+    outline-offset: 2px;
+  }
+}
+
+.publication-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block-end: $spacing-05;
+}
+
+.publication-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: $layer-accent;
+  border-radius: 4px;
+  color: $icon-primary;
+}
+
+.publication-card__icon-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.publication-card__arrow {
+  color: $icon-secondary;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.publication-card__title {
+  @include type-style('heading-03');
+  margin-block-end: $spacing-03;
+  color: $text-primary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.publication-card__description {
+  @include type-style('body-01');
+  color: $text-secondary;
+  margin-block-end: $spacing-05;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.publication-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+  margin-block-start: auto;
+}
+
+// Made with Bob

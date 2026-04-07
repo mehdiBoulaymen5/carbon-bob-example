@@ -1,0 +1,126 @@
+/**
+ * PublicationDetail Styles
+ * 
+ * Styling for publication detail page.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.publication-detail {
+  padding-block: $spacing-07;
+}
+
+.publication-detail__back-button {
+  margin-block: $spacing-05;
+}
+
+.publication-detail__header {
+  margin-block: $spacing-07;
+}
+
+.publication-detail__title {
+  @include type-style('heading-05');
+  margin-block-end: $spacing-05;
+  color: $text-primary;
+}
+
+.publication-detail__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+}
+
+.publication-detail__content {
+  margin-block-start: $spacing-07;
+}
+
+.publication-detail__section {
+  margin-block-end: $spacing-07;
+  padding-block-end: $spacing-07;
+  border-block-end: 1px solid $border-subtle;
+
+  &:last-child {
+    border-block-end: none;
+  }
+}
+
+.publication-detail__section-title {
+  @include type-style('heading-03');
+  margin-block-end: $spacing-05;
+  color: $text-primary;
+}
+
+.publication-detail__description {
+  @include type-style('body-02');
+  color: $text-secondary;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.publication-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+}
+
+.publication-detail__links {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-04;
+}
+
+.publication-detail__metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-05;
+}
+
+.publication-detail__metadata-item {
+  dt {
+    @include type-style('label-01');
+    color: $text-secondary;
+    margin-block-end: $spacing-02;
+    font-weight: 600;
+  }
+
+  dd {
+    @include type-style('body-01');
+    color: $text-primary;
+  }
+}
+
+.publication-detail__related-title {
+  @include type-style('heading-04');
+  margin-block: $spacing-07 $spacing-05;
+  color: $text-primary;
+}
+
+.publication-detail__related-grid {
+  margin-block-end: $spacing-07;
+  row-gap: $spacing-05;
+}
+
+.publication-detail__loading {
+  padding-block: $spacing-07;
+}
+
+.publication-detail__error {
+  padding: $spacing-07;
+  text-align: center;
+
+  h2 {
+    @include type-style('heading-04');
+    margin-block-end: $spacing-05;
+    color: $text-primary;
+  }
+
+  p {
+    @include type-style('body-02');
+    margin-block-end: $spacing-06;
+    color: $text-secondary;
+  }
+}
+
+// Made with Bob

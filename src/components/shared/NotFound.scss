@@ -1,0 +1,52 @@
+/**
+ * NotFound Styles
+ * 
+ * Styling for 404 not found page.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: $spacing-09;
+}
+
+.not-found__content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.not-found__code {
+  @include type-style('heading-07');
+  color: $text-secondary;
+  margin-block-end: $spacing-05;
+  font-weight: 300;
+}
+
+.not-found__title {
+  @include type-style('heading-05');
+  margin-block-end: $spacing-05;
+  color: $text-primary;
+}
+
+.not-found__message {
+  @include type-style('body-02');
+  color: $text-secondary;
+  margin-block-end: $spacing-07;
+  line-height: 1.6;
+}
+
+.not-found__actions {
+  display: flex;
+  gap: $spacing-05;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// Made with Bob

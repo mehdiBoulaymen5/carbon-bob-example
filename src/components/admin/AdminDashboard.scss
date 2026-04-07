@@ -1,0 +1,176 @@
+/**
+ * Admin Dashboard Styles
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.admin-dashboard {
+  padding: $spacing-05 0;
+}
+
+.admin-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-06;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+
+  h1 {
+    @include type-style('heading-04');
+    margin: 0;
+    color: $text-primary;
+  }
+}
+
+.admin-dashboard__actions {
+  display: flex;
+  gap: $spacing-03;
+  flex-wrap: wrap;
+}
+
+// Statistics Cards
+.stat-card {
+  padding: $spacing-05;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card__value {
+  @include type-style('heading-05');
+  color: $text-primary;
+  margin-bottom: $spacing-02;
+}
+
+.stat-card__label {
+  @include type-style('label-01');
+  color: $text-secondary;
+  text-transform: uppercase;
+}
+
+.stat-card--published {
+  border-left: 4px solid $support-success;
+}
+
+.stat-card--draft {
+  border-left: 4px solid $support-warning;
+}
+
+.stat-card--views {
+  border-left: 4px solid $support-info;
+}
+
+// Dashboard Sections
+.dashboard-section {
+  padding: $spacing-05;
+  min-height: 300px;
+}
+
+.dashboard-section__title {
+  @include type-style('heading-03');
+  margin-bottom: $spacing-05;
+  color: $text-primary;
+}
+
+.dashboard-section__empty {
+  @include type-style('body-01');
+  color: $text-secondary;
+  text-align: center;
+  padding: $spacing-07 0;
+}
+
+// Action Badges
+.action-badge {
+  @include type-style('label-01');
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.action-create {
+  background-color: $support-success;
+  color: $text-on-color;
+}
+
+.action-update {
+  background-color: $support-info;
+  color: $text-on-color;
+}
+
+.action-delete {
+  background-color: $support-error;
+  color: $text-on-color;
+}
+
+.action-login {
+  background-color: $layer-accent;
+  color: $text-primary;
+}
+
+.action-default {
+  background-color: $layer-02;
+  color: $text-primary;
+}
+
+// Top Viewed List
+.top-viewed-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.top-viewed-item {
+  padding: $spacing-03;
+  background-color: $layer-01;
+  border-radius: 4px;
+  border-left: 3px solid $border-subtle;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-left-color: $border-interactive;
+  }
+}
+
+.top-viewed-item__title {
+  @include type-style('body-02');
+  color: $text-primary;
+  margin-bottom: $spacing-02;
+  font-weight: 600;
+}
+
+.top-viewed-item__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-03;
+}
+
+.top-viewed-item__views {
+  @include type-style('label-01');
+  color: $text-secondary;
+}
+
+.top-viewed-item__status {
+  @include type-style('label-01');
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.status-published {
+  background-color: $support-success;
+  color: $text-on-color;
+}
+
+.status-draft {
+  background-color: $support-warning;
+  color: $text-primary;
+}
+
+// Made with Bob

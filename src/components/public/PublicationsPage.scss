@@ -1,0 +1,41 @@
+/**
+ * PublicationsPage Styles
+ * 
+ * Styling for publications list page.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.publications-page {
+  padding-block: $spacing-07;
+}
+
+.publications-page__header {
+  margin-block-end: $spacing-07;
+}
+
+.publications-page__title {
+  @include type-style('heading-05');
+  margin-block-end: $spacing-03;
+  color: $text-primary;
+}
+
+.publications-page__subtitle {
+  @include type-style('body-02');
+  color: $text-secondary;
+}
+
+.publications-page__grid {
+  margin-block-end: $spacing-07;
+  row-gap: $spacing-05;
+}
+
+.publications-page__pagination {
+  display: flex;
+  justify-content: center;
+  padding-block: $spacing-06;
+}
+
+// Made with Bob

@@ -1,0 +1,86 @@
+/**
+ * Error Boundary Styles
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-05;
+  background-color: $layer;
+}
+
+.error-boundary__content {
+  text-align: center;
+  padding: $spacing-07;
+}
+
+.error-boundary__icon {
+  color: $support-error;
+  margin-bottom: $spacing-05;
+}
+
+.error-boundary__title {
+  @include type-style('heading-04');
+  margin-bottom: $spacing-03;
+  color: $text-primary;
+}
+
+.error-boundary__message {
+  @include type-style('body-02');
+  color: $text-secondary;
+  margin-bottom: $spacing-06;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-boundary__details {
+  background-color: $layer-01;
+  border: 1px solid $border-subtle;
+  border-radius: 4px;
+  padding: $spacing-05;
+  margin-bottom: $spacing-06;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h3 {
+    @include type-style('heading-02');
+    margin-bottom: $spacing-03;
+    color: $text-primary;
+  }
+}
+
+.error-boundary__error-text,
+.error-boundary__stack {
+  @include type-style('code-01');
+  background-color: $layer-02;
+  padding: $spacing-03;
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: $text-error;
+  margin-bottom: $spacing-03;
+}
+
+.error-boundary__stack {
+  color: $text-secondary;
+  font-size: 0.875rem;
+}
+
+.error-boundary__actions {
+  display: flex;
+  gap: $spacing-03;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// Made with Bob

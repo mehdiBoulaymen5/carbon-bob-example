@@ -104,10 +104,12 @@ const validatePublicationCreate = [
     .withMessage('Industry must not exceed 50 characters'),
   
   body('owners')
+    .optional({ nullable: true })
     .isArray({ min: 1, max: 10 })
     .withMessage('Must select between 1 and 10 owners'),
   
   body('owners.*')
+    .optional()
     .trim()
     .notEmpty()
     .withMessage('Owner cannot be empty')
@@ -202,10 +204,12 @@ const validateUseCaseCreate = [
     .withMessage('Industry must not exceed 50 characters'),
   
   body('owners')
+    .optional({ nullable: true })
     .isArray({ min: 1, max: 10 })
     .withMessage('Must select between 1 and 10 owners'),
   
   body('owners.*')
+    .optional()
     .trim()
     .notEmpty()
     .withMessage('Owner cannot be empty')

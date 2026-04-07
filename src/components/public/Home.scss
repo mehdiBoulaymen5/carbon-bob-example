@@ -1,0 +1,69 @@
+/**
+ * Home Styles
+ * 
+ * Styling for home page with hero section and featured publications.
+ */
+
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+
+.home {
+  padding-block-end: $spacing-09;
+}
+
+.home__hero {
+  padding-block: $spacing-09;
+  background: linear-gradient(135deg, $layer-01 0%, $layer-02 100%);
+  margin-block-end: $spacing-09;
+}
+
+.home__hero-content {
+  max-width: 800px;
+}
+
+.home__hero-title {
+  @include type-style('heading-06');
+  margin-block-end: $spacing-05;
+  color: $text-primary;
+
+  @include breakpoint-up('lg') {
+    @include type-style('heading-07');
+  }
+}
+
+.home__hero-subtitle {
+  @include type-style('body-02');
+  color: $text-secondary;
+  margin-block-end: $spacing-07;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.home__hero-actions {
+  display: flex;
+  gap: $spacing-05;
+  flex-wrap: wrap;
+}
+
+.home__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: $spacing-06;
+  flex-wrap: wrap;
+  gap: $spacing-05;
+}
+
+.home__section-title {
+  @include type-style('heading-04');
+  color: $text-primary;
+}
+
+.home__featured-grid {
+  margin-block-end: $spacing-09;
+  row-gap: $spacing-05;
+}
+
+// Made with Bob

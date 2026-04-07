@@ -1,4 +1,7 @@
-@use '@carbon/react';
+// Import Carbon styles with proper configuration
+@use '@carbon/react' with (
+  $font-path: '~@ibm/plex'
+);
 
 body {
   margin: 0;
