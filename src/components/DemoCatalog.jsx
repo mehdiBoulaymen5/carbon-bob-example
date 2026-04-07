@@ -100,7 +100,7 @@ function DemoCatalog() {
         <Grid>
           <Column sm={4} md={8} lg={16}>
             <div className="catalog-header">
-              <h2 className="catalog-title">Available Use Cases</h2>
+              <h2 className="catalog-title">Full demo catalog</h2>
               <Button
                 kind="primary"
                 renderIcon={Add}
@@ -129,7 +129,7 @@ function DemoCatalog() {
         <Grid>
           <Column sm={4} md={8} lg={16}>
             <div className="catalog-header">
-              <h2 className="catalog-title">Available Use Cases</h2>
+              <h2 className="catalog-title">Full demo catalog</h2>
               <Button
                 kind="primary"
                 renderIcon={Add}
@@ -142,11 +142,15 @@ function DemoCatalog() {
           </Column>
         </Grid>
         <EmptyState
-          title="Failed to load use cases"
-          description={error}
+          title="We couldn’t load the catalog"
+          message={error}
           action={{
             label: 'Try Again',
             onClick: fetchUseCases
+          }}
+          secondaryAction={{
+            label: 'Submit a Use Case',
+            onClick: handleAddUseCase
           }}
         />
         <AddUseCaseModal
@@ -165,7 +169,7 @@ function DemoCatalog() {
         <Grid>
           <Column sm={4} md={8} lg={16}>
             <div className="catalog-header">
-              <h2 className="catalog-title">Available Use Cases</h2>
+              <h2 className="catalog-title">Full demo catalog</h2>
               <Button
                 kind="primary"
                 renderIcon={Add}
@@ -178,8 +182,8 @@ function DemoCatalog() {
           </Column>
         </Grid>
         <EmptyState
-          title="No use cases yet"
-          description="Be the first to add a use case to the catalog!"
+          title="No published use cases yet"
+          message="Start the catalog by sharing the first use case. New submissions appear here immediately once published."
           action={{
             label: 'Add Use Case',
             onClick: handleAddUseCase
@@ -210,7 +214,7 @@ function DemoCatalog() {
       <Grid>
         <Column sm={4} md={8} lg={16}>
           <div className="catalog-header">
-            <h2 className="catalog-title">Available Use Cases</h2>
+            <h2 className="catalog-title">Full demo catalog</h2>
             <Button
               kind="primary"
               renderIcon={Add}

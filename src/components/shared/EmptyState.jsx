@@ -28,22 +28,41 @@ const EmptyState = ({
   actionLabel,
   onAction,
   actionKind = 'primary',
+  action,
+  secondaryAction,
 }) => {
+  const primaryActionLabel = action?.label ?? actionLabel;
+  const primaryActionHandler = action?.onClick ?? onAction;
+  const primaryActionKind = action?.kind ?? actionKind;
+
   return (
     <div className="empty-state">
       <div className="empty-state__content">
         <Icon size={64} className="empty-state__icon" />
         <h3 className="empty-state__title">{title}</h3>
         <p className="empty-state__message">{message}</p>
-        {actionLabel && onAction && (
-          <Button
-            kind={actionKind}
-            onClick={onAction}
-            className="empty-state__action"
-          >
-            {actionLabel}
-          </Button>
-        )}
+        {(primaryActionLabel && primaryActionHandler) || secondaryAction ? (
+          <div className="empty-state__actions">
+            {primaryActionLabel && primaryActionHandler && (
+              <Button
+                kind={primaryActionKind}
+                onClick={primaryActionHandler}
+                className="empty-state__action"
+              >
+                {primaryActionLabel}
+              </Button>
+            )}
+            {secondaryAction?.label && secondaryAction?.onClick && (
+              <Button
+                kind={secondaryAction.kind ?? 'tertiary'}
+                onClick={secondaryAction.onClick}
+                className="empty-state__action"
+              >
+                {secondaryAction.label}
+              </Button>
+            )}
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -56,6 +75,16 @@ EmptyState.propTypes = {
   actionLabel: PropTypes.string,
   onAction: PropTypes.func,
   actionKind: PropTypes.string,
+  action: PropTypes.shape({
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+    kind: PropTypes.string,
+  }),
+  secondaryAction: PropTypes.shape({
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+    kind: PropTypes.string,
+  }),
 };
 
 export default EmptyState;

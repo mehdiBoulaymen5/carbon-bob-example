@@ -254,15 +254,23 @@ const getPublishedPublications = asyncHandler(async (req, res) => {
   
   // Add topics filter
   if (topics) {
-    const topicsArray = topics.split(',').map(t => t.trim());
-    options.arrayOverlap = { topics: topicsArray };
+    const topicsArray = Array.isArray(topics)
+      ? topics.map((topic) => String(topic).trim()).filter(Boolean)
+      : String(topics).split(',').map((topic) => topic.trim()).filter(Boolean);
+    if (topicsArray.length > 0) {
+      options.arrayOverlap = { topics: topicsArray };
+    }
   }
   
   // Add industries filter
   if (industries) {
-    const industriesArray = industries.split(',').map(i => i.trim());
-    if (!options.arrayOverlap) options.arrayOverlap = {};
-    options.arrayOverlap.industries = industriesArray;
+    const industriesArray = Array.isArray(industries)
+      ? industries.map((industry) => String(industry).trim()).filter(Boolean)
+      : String(industries).split(',').map((industry) => industry.trim()).filter(Boolean);
+    if (industriesArray.length > 0) {
+      if (!options.arrayOverlap) options.arrayOverlap = {};
+      options.arrayOverlap.industries = industriesArray;
+    }
   }
   
   const result = await publicationRepository.paginate(options);

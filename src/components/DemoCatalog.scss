@@ -8,8 +8,10 @@
   .catalog-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-block-end: $spacing-07;
+    gap: $spacing-05;
+    flex-wrap: wrap;
 
     .catalog-title {
       @include type-style('heading-04');
@@ -52,9 +54,11 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-block-end: $spacing-05;
+      gap: $spacing-04;
 
       .demo-icon {
         color: $icon-primary;
+        flex-shrink: 0;
       }
     }
 
@@ -69,6 +73,7 @@
       color: $text-secondary;
       margin-block-end: $spacing-05;
       flex-grow: 1;
+      line-height: 1.6;
     }
 
     .demo-tags {
@@ -87,6 +92,18 @@
     .cds--text-area,
     .cds--multi-select {
       margin-block-end: 0;
+    }
+  }
+}
+
+@media (max-width: 42rem) {
+  .demo-catalog {
+    .catalog-header {
+      align-items: stretch;
+
+      .cds--btn {
+        width: 100%;
+      }
     }
   }
 }

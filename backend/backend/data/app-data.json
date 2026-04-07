@@ -7,9 +7,9 @@
       "name": "System Administrator",
       "role": "admin",
       "is_active": true,
-      "last_login_at": "2026-04-07T10:08:20.727Z",
+      "last_login_at": "2026-04-07T12:01:06.525Z",
       "created_at": "2026-04-07T08:50:07.106Z",
-      "updated_at": "2026-04-07T10:08:20.727Z"
+      "updated_at": "2026-04-07T12:01:06.525Z"
     }
   ],
   "publications": [
@@ -38,34 +38,8 @@
       "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
       "published_at": "2026-04-07T09:42:41.746Z",
       "created_at": "2026-04-07T09:42:41.748Z",
-      "updated_at": "2026-04-07T10:06:26.298Z",
-      "view_count": 6
-    },
-    {
-      "id": "c3bd2792-eda7-462d-86cf-28991e228496",
-      "title": "wxcvbn,;klmxvcmwbcjhxvlkhmjdmglsdq,nglkdqshmxqdhgdkqwv",
-      "description": "cqs:kfjsdhgfms,qdhg,qg,SGKdsghkdsGM",
-      "topics": [
-        "General"
-      ],
-      "audience": [
-        "General"
-      ],
-      "industries": [
-        "General"
-      ],
-      "owners": null,
-      "git_source": null,
-      "box_source": null,
-      "icon": "Code",
-      "status": "published",
-      "metadata": "{}",
-      "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
-      "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
-      "published_at": "2026-04-07T10:00:53.641Z",
-      "created_at": "2026-04-07T10:00:53.642Z",
-      "updated_at": "2026-04-07T10:06:53.143Z",
-      "view_count": 2
+      "updated_at": "2026-04-07T10:20:09.268Z",
+      "view_count": 7
     },
     {
       "id": "22003ab8-81ea-422b-89c4-9b699b2ecaaa",
@@ -90,8 +64,8 @@
       "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
       "published_at": "2026-04-07T10:06:21.498Z",
       "created_at": "2026-04-07T10:06:21.498Z",
-      "updated_at": "2026-04-07T10:10:06.961Z",
-      "view_count": 2
+      "updated_at": "2026-04-07T10:35:32.828Z",
+      "view_count": 5
     },
     {
       "id": "a2630e27-364f-45c9-887a-07e8e7869688",
@@ -122,51 +96,27 @@
   ],
   "refresh_tokens": [
     {
-      "id": "6da3f7d7-7973-4385-bf79-d781de9742c6",
+      "id": "600c2566-1f12-4252-8de7-54164c9caf05",
       "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "5b5983c87cade14dd6366a3b3ea916ba146298ff080cd4860d59bf2bcb817b2b",
-      "expires_at": "2026-04-14T08:50:46.121Z",
-      "created_at": "2026-04-07T08:50:46.121Z",
-      "revoked_at": "2026-04-07T08:56:36.429Z"
-    },
-    {
-      "id": "9b306ae9-50a0-412b-9485-64a8808b0f44",
-      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "ea1959528fdc030d6199550cc9eb90083df61b3fc9a7e90a6945667edfd28ad2",
-      "expires_at": "2026-04-14T09:46:36.921Z",
-      "created_at": "2026-04-07T09:46:36.921Z",
+      "token_hash": "653e83ed693598f2b4f8742ec37ef20b5eb71b2543b536dcdce4a69eafe9b082",
+      "expires_at": "2026-04-14T10:21:32.258Z",
+      "created_at": "2026-04-07T10:21:32.258Z",
       "revoked_at": null
     },
     {
-      "id": "1a239ae9-e7c3-49a1-9e95-c6472a9ae4db",
+      "id": "bad250ba-3107-45cc-8023-78d6c47f15df",
       "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "25cc5dab362fad01f6dcbf25a9ea078bf89fc40dc783c2d34b891b44068296c8",
-      "expires_at": "2026-04-14T09:52:13.910Z",
-      "created_at": "2026-04-07T09:52:13.910Z",
+      "token_hash": "3e02cd51e947ac142c9a467a52478554131b7ce44ad56b8c8caacfe5e4bfa4b8",
+      "expires_at": "2026-04-14T10:39:00.456Z",
+      "created_at": "2026-04-07T10:39:00.456Z",
       "revoked_at": null
     },
     {
-      "id": "cb15185e-c6be-4bdd-b9e4-5a54ac948fbe",
+      "id": "d29d9709-7842-4c6b-97d1-b555234fee58",
       "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "e87530d405297a491e59d7dafc5934b0512a8d69f32b2a93a141d4b7eaee1f13",
-      "expires_at": "2026-04-14T09:57:54.717Z",
-      "created_at": "2026-04-07T09:57:54.717Z",
-      "revoked_at": null
-    },
-    {
-      "id": "ff0c720f-f030-46c5-909d-af3ea4d916c1",
-      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "7078173ab1065ca8a01071981d25445f11d21828816834085b4813ad677ad9cf",
-      "expires_at": "2026-04-14T10:01:18.595Z",
-      "created_at": "2026-04-07T10:01:18.595Z",
-      "revoked_at": null
-    },
-    {
-      "id": "91c09746-90e6-4a3f-a14c-7c6e6ab5e1a9",
-      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
-      "token_hash": "6a3725950124717ed905a4c33d9e4efcb44548904dc52e1fd760e6dadf7a8800",
-      "expires_at": "2026-04-14T10:08:20.726Z",
-      "created_at": "2026-04-07T10:08:20.726Z",
+      "token_hash": "7eaa4920510c0c8aaa19fd8897ea17e10e50f49d74716cfeb951615b69e1c605",
+      "expires_at": "2026-04-14T12:01:06.522Z",
+      "created_at": "2026-04-07T12:01:06.523Z",
       "revoked_at": null
     }
   ],
@@ -501,6 +451,75 @@
       "success": true,
       "error_message": null,
       "timestamp": "2026-04-07T10:09:49.864Z"
+    },
+    {
+      "id": "8192d047-b031-4889-8fd7-60a27cac636c",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:39:00.459Z"
+    },
+    {
+      "id": "6c0dbd79-ee37-407e-ae94-1f8daadf498f",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "DELETE",
+      "resource_type": "publication",
+      "resource_id": "c3bd2792-eda7-462d-86cf-28991e228496",
+      "changes": {
+        "deletedPublication": {
+          "id": "c3bd2792-eda7-462d-86cf-28991e228496",
+          "title": "wxcvbn,;klmxvcmwbcjhxvlkhmjdmglsdq,nglkdqshmxqdhgdkqwv",
+          "description": "cqs:kfjsdhgfms,qdhg,qg,SGKdsghkdsGM",
+          "topics": [
+            "General"
+          ],
+          "audience": [
+            "General"
+          ],
+          "industries": [
+            "General"
+          ],
+          "owners": null,
+          "git_source": null,
+          "box_source": null,
+          "icon": "Code",
+          "status": "published",
+          "metadata": "{}",
+          "created_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "updated_by": "a46c7bab-4462-4442-8049-23023bb84591",
+          "published_at": "2026-04-07T10:00:53.641Z",
+          "created_at": "2026-04-07T10:00:53.642Z",
+          "updated_at": "2026-04-07T10:20:03.728Z",
+          "view_count": 3
+        }
+      },
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T10:41:28.943Z"
+    },
+    {
+      "id": "2ef5b53f-d6b7-4fa7-b628-3f20a4ff0e5d",
+      "user_id": "a46c7bab-4462-4442-8049-23023bb84591",
+      "user_email": "admin@example.com",
+      "action": "LOGIN",
+      "resource_type": "user",
+      "resource_id": null,
+      "changes": null,
+      "ip_address": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+      "success": true,
+      "error_message": null,
+      "timestamp": "2026-04-07T12:01:06.525Z"
     }
   ]
 }

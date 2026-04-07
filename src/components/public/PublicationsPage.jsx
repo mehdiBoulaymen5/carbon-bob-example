@@ -258,9 +258,10 @@ const PublicationsPage = () => {
       <Grid>
         <Column sm={4} md={8} lg={16}>
           <div className="publications-page__header">
-            <h1 className="publications-page__title">Publications</h1>
+            <p className="publications-page__eyebrow">Browse use cases</p>
+            <h1 className="publications-page__title">Explore the full Bob demo library</h1>
             <p className="publications-page__subtitle">
-              Explore our collection of IBM Bob demonstrations and examples
+              Search published use cases by topic, scan the latest additions, and open any entry for implementation details and source links.
             </p>
           </div>
         </Column>
@@ -282,12 +283,20 @@ const PublicationsPage = () => {
         <Grid>
           <Column sm={4} md={8} lg={16}>
             <EmptyState
-              title="Error Loading Publications"
+              title="We couldn’t load the browse page"
               message={error}
               action={{
                 label: 'Try Again',
                 onClick: fetchPublications
               }}
+              secondaryAction={
+                hasActiveFilters()
+                  ? {
+                      label: 'Clear Filters',
+                      onClick: handleClearFilters
+                    }
+                  : null
+              }
             />
           </Column>
         </Grid>
@@ -297,11 +306,11 @@ const PublicationsPage = () => {
         <Grid>
           <Column sm={4} md={8} lg={16}>
             <EmptyState
-              title="No Publications Found"
+              title={hasActiveFilters() ? 'No matching use cases found' : 'No published use cases yet'}
               message={
                 hasActiveFilters()
-                  ? 'Try adjusting your search or filters'
-                  : 'No publications are currently available'
+                  ? 'Try a broader search, remove a topic filter, or sort by newest to discover more results.'
+                  : 'Newly published use cases will appear here automatically once they are available.'
               }
               action={
                 hasActiveFilters()
@@ -309,7 +318,10 @@ const PublicationsPage = () => {
                       label: 'Clear Filters',
                       onClick: handleClearFilters
                     }
-                  : null
+                  : {
+                      label: 'Reload',
+                      onClick: fetchPublications
+                    }
               }
             />
           </Column>
