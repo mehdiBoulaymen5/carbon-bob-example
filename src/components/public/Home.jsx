@@ -327,8 +327,8 @@ const Home = () => {
                 onClick: fetchPublications
               }}
               secondaryAction={{
-                label: 'Open browse page',
-                onClick: handleViewAllPublications
+                label: 'Add new use case',
+                onClick: handleOpenAddUseCaseModal
               }}
             />
           </Column>
@@ -375,8 +375,8 @@ const Home = () => {
                       onClick: handleClearFilters
                     }
                   : {
-                      label: 'Open browse page',
-                      onClick: handleViewAllPublications
+                      label: 'Add new use case',
+                      onClick: handleOpenAddUseCaseModal
                     }
               }
               secondaryAction={{
