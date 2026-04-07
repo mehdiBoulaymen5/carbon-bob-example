@@ -5,9 +5,11 @@
 
 const { logAudit, getIpAddress, getUserAgent } = require('../utils/audit');
 const publicationRepository = require('../repositories/publication.repository');
+const userRepository = require('../repositories/user.repository');
 const response = require('../utils/response');
 const { asyncHandler, AppError } = require('../middleware/errorHandler');
-const { PAGINATION, PUBLICATION_STATUS, AUDIT_ACTIONS, ERROR_CODES } = require('../config/constants');
+const { PAGINATION, PUBLICATION_STATUS, AUDIT_ACTIONS, ERROR_CODES, USER_ROLES } = require('../config/constants');
+const { isFileStorage } = require('../config/storage');
 const sseController = require('./sse.controller');
 
 /**
@@ -334,32 +336,33 @@ const createUseCase = asyncHandler(async (req, res) => {
   const status = PUBLICATION_STATUS.PUBLISHED;
   const publishedAt = new Date();
   
-  // For public submissions, we need a system user ID
-  // Check if there's an authenticated user, otherwise use system user
+  // For public submissions, use authenticated user when present, otherwise a fallback admin/system user
   let userId = null;
   if (req.user && req.user.id) {
     userId = req.user.id;
   } else {
-    // Get or create a system user for public submissions
-    const systemUserQuery = 'SELECT id FROM users WHERE email = $1 LIMIT 1';
-    const systemUserResult = await require('../config/database').query(
-      systemUserQuery,
-      ['system@example.com']
-    );
-    
-    if (systemUserResult.rows.length > 0) {
-      userId = systemUserResult.rows[0].id;
+    const systemUser = await userRepository.findByEmail('system@example.com');
+
+    if (systemUser) {
+      userId = systemUser.id;
     } else {
-      // If no system user exists, use the first admin user
-      const adminQuery = 'SELECT id FROM users WHERE role = $1 LIMIT 1';
-      const adminResult = await require('../config/database').query(
-        adminQuery,
-        ['admin']
-      );
-      
-      if (adminResult.rows.length > 0) {
-        userId = adminResult.rows[0].id;
-      } else {
+      const adminUsers = await userRepository.findByRole(USER_ROLES.ADMIN, {
+        limit: 1,
+        offset: 0,
+        orderBy: { created_at: 'ASC' }
+      });
+
+      if (adminUsers.length > 0) {
+        userId = adminUsers[0].id;
+      } else if (isFileStorage()) {
+        const fallbackAdmin = await userRepository.findByEmail(process.env.DEMO_ADMIN_EMAIL || 'admin@example.com');
+
+        if (fallbackAdmin) {
+          userId = fallbackAdmin.id;
+        }
+      }
+
+      if (!userId) {
         throw new AppError('System configuration error: No admin user found', 500, ERROR_CODES.INTERNAL_ERROR);
       }
     }

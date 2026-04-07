@@ -92,15 +92,27 @@ ibmcloud ce application create \
 - **CPU**: 0.25 vCPU per instance
 - **Memory**: 0.5 GB per instance
 
-### Environment Variables (Optional)
+### Environment Variables
 
-If you need to add environment variables:
+For a Code Engine deployment without PostgreSQL, configure the backend to use file storage mode.
 
 ```bash
 ibmcloud ce application update \
   --name carbon-react-app \
-  --env KEY=VALUE
+  --env STORAGE_MODE=file \
+  --env FILE_STORAGE_DIR=/tmp/bob-catalog-data \
+  --env FILE_STORAGE_PATH=/tmp/bob-catalog-data/app-data.json \
+  --env DEMO_ADMIN_EMAIL=admin@example.com \
+  --env DEMO_ADMIN_PASSWORD=admin123 \
+  --env DEMO_ADMIN_NAME="System Administrator" \
+  --env JWT_SECRET=replace-with-a-secure-random-string \
+  --env JWT_REFRESH_SECRET=replace-with-a-secure-random-string
 ```
+
+Notes:
+- File storage mode keeps backend data in a JSON file local to the container instance.
+- This is suitable for demos and single-instance usage.
+- Avoid scaling above one instance when using file-backed storage, because each instance would maintain its own local file state.
 
 ## Managing Your Deployment
 
@@ -185,12 +197,15 @@ ibmcloud ce application events --name carbon-react-app
 2. **Port Issues**: Ensure nginx is configured to listen on port 8080
 3. **Memory Issues**: Increase memory allocation if the app crashes
 4. **Scaling Issues**: Adjust min/max scale based on your traffic patterns
+5. **No PostgreSQL Available**: Set [`STORAGE_MODE`](backend/.env.example) to `file` and keep the deployment at a single instance
+6. **Admin Login Issues in Demo Mode**: Verify [`DEMO_ADMIN_EMAIL`](backend/.env.example), [`DEMO_ADMIN_PASSWORD`](backend/.env.example), [`JWT_SECRET`](backend/.env.example), and [`JWT_REFRESH_SECRET`](backend/.env.example) are set consistently in Code Engine
 
 ## Cost Optimization
 
 - **Scale to Zero**: Set `--min-scale 0` to avoid charges when not in use
 - **Right-size Resources**: Start with minimal CPU/memory and scale up as needed
 - **Monitor Usage**: Use IBM Cloud monitoring to track resource consumption
+- **File-backed Demo Deployments**: Keep `--max-scale 1` when [`STORAGE_MODE`](backend/.env.example:1) is `file`
 
 ## Additional Resources
 

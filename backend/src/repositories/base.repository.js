@@ -5,6 +5,8 @@
 
 const db = require('../config/database');
 const { PAGINATION } = require('../config/constants');
+const { isFileStorage } = require('../config/storage');
+const FileRepository = require('./file.repository');
 
 /**
  * Base Repository class with common CRUD operations
@@ -16,6 +18,7 @@ class BaseRepository {
    */
   constructor(tableName) {
     this.tableName = tableName;
+    this.fileRepository = isFileStorage() ? new FileRepository(tableName) : null;
   }
 
   /**
@@ -29,6 +32,10 @@ class BaseRepository {
    * @returns {Promise<Array>} Array of records
    */
   async findAll(options = {}) {
+    if (this.fileRepository) {
+      return this.fileRepository.findAll(options);
+    }
+
     const {
       where = {},
       arrayOverlap = {},
@@ -63,6 +70,10 @@ class BaseRepository {
    * @returns {Promise<Object|null>} Record or null
    */
   async findOne(where, select = ['*']) {
+    if (this.fileRepository) {
+      return this.fileRepository.findOne(where, select);
+    }
+
     const { whereClause, values } = this.buildWhereClause(where);
     const selectClause = select.join(', ');
 
@@ -95,6 +106,10 @@ class BaseRepository {
    * @returns {Promise<number>} Count
    */
   async count(where = {}, arrayOverlap = {}, search = '') {
+    if (this.fileRepository) {
+      return this.fileRepository.count(where, arrayOverlap, search);
+    }
+
     const { whereClause, values } = this.buildWhereClause(where, arrayOverlap, search);
 
     const query = `
@@ -104,7 +119,7 @@ class BaseRepository {
     `;
 
     const result = await db.query(query, values);
-    return parseInt(result.rows[0].count);
+    return parseInt(result.rows[0].count, 10);
   }
 
   /**
@@ -114,6 +129,10 @@ class BaseRepository {
    * @returns {Promise<Object>} Created record
    */
   async create(data, returning = ['*']) {
+    if (this.fileRepository) {
+      return this.fileRepository.create(data, returning);
+    }
+
     const columns = Object.keys(data);
     const values = Object.values(data);
     const placeholders = values.map((_, i) => `$${i + 1}`).join(', ');
@@ -137,19 +156,23 @@ class BaseRepository {
    * @returns {Promise<Array>} Updated records
    */
   async update(where, data, returning = ['*']) {
+    if (this.fileRepository) {
+      return this.fileRepository.update(where, data, returning);
+    }
+
     const { whereClause, values: whereValues } = this.buildWhereClause(where);
-    
+
     const setClause = Object.keys(data)
       .map((key, i) => `${key} = $${i + 1}`)
       .join(', ');
-    
+
     const values = [...Object.values(data), ...whereValues];
     const returningClause = returning.join(', ');
 
     const query = `
       UPDATE ${this.tableName}
       SET ${setClause}, updated_at = NOW()
-      ${whereClause.replace(/\$(\d+)/g, (match, num) => `$${parseInt(num) + Object.keys(data).length}`)}
+      ${whereClause.replace(/\$(\d+)/g, (match, num) => `$${parseInt(num, 10) + Object.keys(data).length}`)}
       RETURNING ${returningClause}
     `;
 
@@ -176,6 +199,10 @@ class BaseRepository {
    * @returns {Promise<Array>} Deleted records
    */
   async delete(where, returning = ['*']) {
+    if (this.fileRepository) {
+      return this.fileRepository.delete(where, returning);
+    }
+
     const { whereClause, values } = this.buildWhereClause(where);
     const returningClause = returning.join(', ');
 
@@ -225,13 +252,16 @@ class BaseRepository {
    * @returns {Promise<Object>} Paginated results with metadata
    */
   async paginate(options = {}) {
+    if (this.fileRepository) {
+      return this.fileRepository.paginate(options);
+    }
+
     const {
       page = PAGINATION.DEFAULT_PAGE,
       limit = PAGINATION.DEFAULT_LIMIT,
       ...queryOptions
     } = options;
 
-    // Ensure limit is within bounds
     const safeLimit = Math.min(Math.max(limit, PAGINATION.MIN_LIMIT), PAGINATION.MAX_LIMIT);
     const offset = (page - 1) * safeLimit;
 
@@ -265,11 +295,10 @@ class BaseRepository {
     const values = [];
     let paramCount = 1;
 
-    // Handle regular WHERE conditions
     const keys = Object.keys(conditions);
     keys.forEach(key => {
       const value = conditions[key];
-      
+
       if (value === null) {
         clauses.push(`${key} IS NULL`);
       } else if (Array.isArray(value)) {
@@ -277,7 +306,6 @@ class BaseRepository {
         clauses.push(`${key} IN (${placeholders})`);
         values.push(...value);
       } else if (typeof value === 'object' && value.operator) {
-        // Support for operators like { operator: '>=', value: 10 }
         clauses.push(`${key} ${value.operator} $${paramCount++}`);
         values.push(value.value);
       } else {
@@ -286,7 +314,6 @@ class BaseRepository {
       }
     });
 
-    // Handle array overlap conditions (PostgreSQL && operator)
     const overlapKeys = Object.keys(arrayOverlap);
     overlapKeys.forEach(key => {
       const value = arrayOverlap[key];
@@ -296,7 +323,6 @@ class BaseRepository {
       }
     });
 
-    // Handle search query
     if (search) {
       const searchPattern = `%${search}%`;
       clauses.push(`(
@@ -323,34 +349,33 @@ class BaseRepository {
    * @param {Object} orderBy - Order by object
    * @returns {string} ORDER BY clause
    */
-  buildOrderByClause(orderBy) {
-    const keys = Object.keys(orderBy);
-    
-    if (keys.length === 0) {
+  buildOrderByClause(orderBy = {}) {
+    const entries = Object.entries(orderBy);
+
+    if (entries.length === 0) {
       return '';
     }
 
-    const clauses = keys.map(key => `${key} ${orderBy[key]}`);
+    const clauses = entries.map(([column, direction]) => {
+      const safeDirection = String(direction).toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
+      return `${column} ${safeDirection}`;
+    });
+
     return `ORDER BY ${clauses.join(', ')}`;
   }
 
   /**
    * Execute raw query
    * @param {string} query - SQL query
-   * @param {Array} values - Query parameters
+   * @param {Array} params - Query parameters
    * @returns {Promise<Object>} Query result
    */
-  async raw(query, values = []) {
-    return db.query(query, values);
-  }
+  async raw(query, params = []) {
+    if (this.fileRepository) {
+      return this.fileRepository.raw(query, params);
+    }
 
-  /**
-   * Execute transaction
-   * @param {Function} callback - Transaction callback
-   * @returns {Promise<any>} Transaction result
-   */
-  async transaction(callback) {
-    return db.transaction(callback);
+    return db.query(query, params);
   }
 }
 
